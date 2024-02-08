@@ -1,0 +1,10 @@
+.botaoFlutuante {
+    position: fixed;
+    bottom: 10vh;
+    right: 10vw;
+    background-color: var(--cor1);
+    color: white;
+    padding: 1rem;
+    border-radius: 50%;
+    box-shadow: var(--sombra);
+}

@@ -1,0 +1,66 @@
+.app {
+    width: min(90%, 600px);
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.titulo {
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid rebeccapurple; */
+}
+
+.titulo h1 {
+    color: var(--cor1);
+    font-weight: 600;
+}
+
+.titulo img {
+    width: unset;
+    height: 90%;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 1rem;
+    border-radius: 12px;
+    background-color: var(--cor2);
+}
+
+.legenda {
+    align-self: flex-start;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #f0f0f0;
+}
+
+.valor-total {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: white;
+}
+
+.dez-por-cento {
+    /* border: 1px solid lightskyblue; */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.check {
+    display: flex;
+    gap: 1ch;
+    accent-color: var(--cor1);
+}
+
+.check input:checked + span {
+    font-weight: 600;
+    color: var(--cor1)
+}

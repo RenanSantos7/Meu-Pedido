@@ -1,0 +1,24 @@
+.campo {
+    /* border: 1px solid goldenrod; */
+    display: flex;
+    flex-direction: column;
+    margin-block: 1rem;
+    gap: .5rem;
+}
+
+.campo .label {
+    font-weight: 600;
+}
+
+.campo input {
+    background-color: var(--bg-input);
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: .4rem;
+}
+
+.campo input:focus {
+    outline: none;
+    border-color: var(--cor2);
+}
