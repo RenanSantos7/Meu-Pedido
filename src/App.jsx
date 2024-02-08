@@ -5,35 +5,19 @@ import { useEffect, useState } from 'react'
 import Tabela from './components/Tabela/Tabela'
 import BotaoFlutuante from './components/BotaoFlutuante/BotaoFlutuante'
 import ModalAdd from './components/ModalAdd/ModalAdd'
+import Checkbox from './components/Checkbox/CheckBox'
 
 export default function App() {
-    const itens = [
-        {
-            nome: 'Hamburguer',
-            qtd: 2,
-            valor: 7
-        },
-        {
-            nome: 'Refrigerante',
-            qtd: 2,
-            valor: 4.5
-        },
-        {
-            nome: 'Sushi',
-            qtd: 6,
-            valor: 4.5
-        },
-    ]
-
-    const [pedidos, setPedidos] = useState(itens)
+    const [pedidos, setPedidos] = useState([])
     const [total, setTotal] = useState(0)
     const [dezPorCento, setDezPorCento] = useState(false)
     const [modalAdd, setModalAdd] = useState(false)
 
+
     function calculaTotal(itens) {
         let totalParcial = 0
         itens.forEach(item => {
-            const totalItem = item.qtd * item.valor
+            const totalItem = item.qtd * item.preco
             totalParcial += totalItem
         })
 
@@ -54,28 +38,29 @@ export default function App() {
                 <h1>Meu Pedido</h1>
                 <img src={logo} alt="Ícone de fastfood com um hamburguer e um pacote de batatas fritas. Fonte: Freepik" />
             </div>
-            
+
             <div className='total'>
                 <p className='legenda'>Valor total</p>
                 <p className='valor-total'>{localizarMoeda(total)}</p>
             </div>
 
             <div className='dez-por-cento'>
-                <label className='check'>
-                    <input
-                        type='checkbox'
-                        onChange={() => setDezPorCento(!dezPorCento)}
-                    />
-                    <span>Calcular 10%</span>
-                </label>
+                <Checkbox valor={dezPorCento} setValor={setDezPorCento} titulo='Calcular 10%' />
             </div>
 
-            <Tabela itens={pedidos} />
+            {pedidos.length > 0
+                ? <Tabela itens={pedidos} />
+                : <p className='explicacao'>Aperte no botão abaixo e adicione o primeiro pedido</p>
+            }
 
             <BotaoFlutuante aoClicar={() => setModalAdd(true)} />
-            
+
             {modalAdd &&
-                <ModalAdd aberto={modalAdd} fechar={() => setModalAdd(false)} />
+                <ModalAdd
+                    aberto={modalAdd}
+                    fechar={() => setModalAdd(false)}
+                    setPedidos={setPedidos}
+                />
             }
         </div>
     )

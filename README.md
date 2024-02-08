@@ -40,4 +40,4 @@ O terminal mostrará o endereço para acessar o site no qual você pode clicar p
 
 ## Licensa
 
-O projeto está disponível publicamente com a licença [MIT](./LICENSE)
+O projeto está disponível publicamente com [licença não comercial](./LICENSE.md)

@@ -19,7 +19,7 @@ export default function Tabela({itens}) {
                         <tr key={index}>
                             <td className={styles.col1}>{item.nome}</td>
                             <td className={styles.col2}>{item.qtd}</td>
-                            <td className={styles.col3}>{localizarMoeda(item.valor)}</td>
+                            <td className={styles.col3}>{localizarMoeda(Number(item.preco))}</td>
                         </tr>
                     ))}
                 </tbody>
