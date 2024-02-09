@@ -1,0 +1,12 @@
+.botao {
+    text-transform: uppercase;
+    font-weight: 600;
+    background-color: var(--bg);
+    padding: 1rem;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.botao:active {
+    background-color: var(--cor2-1);
+}

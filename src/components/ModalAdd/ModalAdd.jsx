@@ -1,28 +1,23 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import styles from './ModalAdd.module.css'
-import CampoTexto from '../CampoTexto/CampoTexto'
-import Botao from '../Botao/Botao'
+import CampoTexto from '../Elementos/CampoTexto/CampoTexto'
+import Botao from '../Elementos/Botao/Botao'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { PedidosContext } from '../../context/PedidosContext'
 
-export default function ModalAdd({ aberto, fechar, setPedidos }) {
+export default function ModalAdd() {
 
-    const [nome, setNome] = useState('')
-    const [preco, setPreco] = useState(0)
-    const [qtd, setQtd] = useState(0)
+    const {
+        nome, setNome,
+        preco, setPreco,
+        qtd, setQtd,
+        modalAdd, setModalAdd,
+        adicionarPedido
+    } = useContext(PedidosContext)
 
-    function addPedido() {
-        const novoPedido = {
-            nome: nome,
-            preco: preco,
-            qtd: qtd
-        }
-
-        setPedidos(prev => [...prev, novoPedido])
-
-        setNome('')
-        setPreco(0)
-        setQtd(0)
+    function fechar() {
+        setModalAdd(false)
     }
 
     return (
@@ -34,8 +29,7 @@ export default function ModalAdd({ aberto, fechar, setPedidos }) {
 
             <dialog
                 className={styles.modal}
-                // open={aberto}
-                open={true}
+                open={modalAdd}
             >
                 <button className={styles.botaoFechar} onClick={fechar}>
                     <FontAwesomeIcon icon={faXmark} />
@@ -45,7 +39,7 @@ export default function ModalAdd({ aberto, fechar, setPedidos }) {
 
                 <CampoTexto
                     key='nome'
-                    titulo='Nome' 
+                    titulo='Nome'
                     placeholder='O nome do produto'
                     valor={nome}
                     setValor={setNome}
@@ -69,7 +63,7 @@ export default function ModalAdd({ aberto, fechar, setPedidos }) {
 
                 <div className={styles.botaoContainer}>
                     <Botao
-                        aoClicar={addPedido}
+                        aoClicar={adicionarPedido}
                     >Adicionar</Botao>
                 </div>
             </dialog>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import styles from './CampoTexto.module.css'
-import localizarMoeda from '../../utils/localizarMoeda'
+import localizarMoeda from '../../../utils/localizarMoeda'
 
 export default function CampoTexto({
     titulo,
@@ -18,9 +18,12 @@ export default function CampoTexto({
             valorAtual = valorAtual
                 .replace(/[^0-9,]/g, '')
                 .replace(',', '.')
+            
+            setValor(Number(valorAtual))
+        } else {
+            setValor(valorAtual)
         }
         
-        setValor(valorAtual)
     }
 
     return (

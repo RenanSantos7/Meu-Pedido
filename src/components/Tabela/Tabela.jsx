@@ -9,7 +9,7 @@ export default function Tabela({itens}) {
                 <thead>
                     <tr>
                         <th className={styles.col1}>Item</th>
-                        <th className={styles.col2}>Qt</th>
+                        <th className={styles.col2}>Qtd</th>
                         <th className={styles.col3}>Valor Und</th>
                     </tr>
                 </thead>

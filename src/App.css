@@ -72,4 +72,12 @@
     width: 75%;
     margin: 5rem auto;
     text-align: center;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+
+.botao-resetar {
+    position: fixed;
+    bottom: 10vh;
 }

@@ -1,18 +1,19 @@
 import './App.css'
 import localizarMoeda from './utils/localizarMoeda'
 import logo from './assets/fast-food.png'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Tabela from './components/Tabela/Tabela'
-import BotaoFlutuante from './components/BotaoFlutuante/BotaoFlutuante'
+import BotaoFlutuante from './components/Elementos/BotaoFlutuante/BotaoFlutuante'
 import ModalAdd from './components/ModalAdd/ModalAdd'
-import Checkbox from './components/Checkbox/CheckBox'
+import Checkbox from './components/Elementos/Checkbox/CheckBox'
+import { PedidosContext, PedidosProvider } from './context/PedidosContext'
+import BotaoSemFundo from './components/Elementos/BotaoSemFundo/BotaoSemFundo'
 
 export default function App() {
-    const [pedidos, setPedidos] = useState([])
     const [total, setTotal] = useState(0)
     const [dezPorCento, setDezPorCento] = useState(false)
-    const [modalAdd, setModalAdd] = useState(false)
 
+    const { modalAdd, pedidos } = useContext(PedidosContext)
 
     function calculaTotal(itens) {
         let totalParcial = 0
@@ -53,15 +54,20 @@ export default function App() {
                 : <p className='explicacao'>Aperte no botão abaixo e adicione o primeiro pedido</p>
             }
 
-            <BotaoFlutuante aoClicar={() => setModalAdd(true)} />
+            <BotaoFlutuante />
 
-            {modalAdd &&
-                <ModalAdd
-                    aberto={modalAdd}
-                    fechar={() => setModalAdd(false)}
-                    setPedidos={setPedidos}
-                />
-            }
+            <div className='botao-resetar'>
+                {pedidos.length > 0 &&
+                    <BotaoSemFundo
+                    aoClicar={() => {
+                        localStorage.clear()
+                        location.reload()
+                    }}
+                    >Resetar Pedidos</BotaoSemFundo>
+                }
+            </div>
+
+            {modalAdd && <ModalAdd />}
         </div>
     )
 }
