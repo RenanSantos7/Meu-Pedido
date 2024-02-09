@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from 'react'
 import styles from './ModalAdd.module.css'
-import CampoTexto from '../Elementos/CampoTexto/CampoTexto'
+import { useContext, useEffect, useState } from 'react'
+import CampoFormulario from '../Elementos/CampoFormulario/CampoFormulario'
 import Botao from '../Elementos/Botao/Botao'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { PedidosContext } from '../../context/PedidosContext'
+import CampoMoeda from '../Elementos/CampoMoeda/CampoMoeda'
 
 export default function ModalAdd() {
 
@@ -37,7 +38,7 @@ export default function ModalAdd() {
 
                 <h2 className={styles.titulo}>Acrescente um pedido</h2>
 
-                <CampoTexto
+                <CampoFormulario
                     key='nome'
                     titulo='Nome'
                     placeholder='O nome do produto'
@@ -45,7 +46,7 @@ export default function ModalAdd() {
                     setValor={setNome}
                 />
 
-                <CampoTexto
+                <CampoMoeda
                     key='preco'
                     titulo='Preço'
                     valor={preco}
@@ -53,7 +54,7 @@ export default function ModalAdd() {
                     tipo='moeda'
                 />
 
-                <CampoTexto
+                <CampoFormulario
                     key='qtd'
                     titulo='Quantidade'
                     valor={qtd}

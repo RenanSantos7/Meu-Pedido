@@ -59,10 +59,10 @@ export default function App() {
             <div className='botao-resetar'>
                 {pedidos.length > 0 &&
                     <BotaoSemFundo
-                    aoClicar={() => {
-                        localStorage.clear()
-                        location.reload()
-                    }}
+                        aoClicar={() => {
+                            localStorage.clear()
+                            location.reload()
+                        }}
                     >Resetar Pedidos</BotaoSemFundo>
                 }
             </div>

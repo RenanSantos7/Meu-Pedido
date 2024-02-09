@@ -22,7 +22,6 @@
 
 .modal {
 	padding: 2rem;
-	padding-bottom: 4rem;
 	border-radius: 18px 18px 0 0;
 	position: fixed;
 	z-index: 2;

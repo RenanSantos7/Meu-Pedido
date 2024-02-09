@@ -1,14 +1,12 @@
-import { useEffect, useState } from 'react'
-import styles from './CampoTexto.module.css'
-import localizarMoeda from '../../../utils/localizarMoeda'
+import styles from './CampoFormulario.module.css'
 
-export default function CampoTexto({
+export default function CampoFormulario({
     titulo,
     placeholder,
     valor,
     setValor,
     padrao,
-    tipo
+    tipo,
 }) {
 
     function aoMudar(alvo) {
@@ -34,6 +32,7 @@ export default function CampoTexto({
                 value={valor}
                 onChange={evt => aoMudar(evt.target.value)}
                 pattern={padrao}
+                required={true}
             />
         </label>
     )
