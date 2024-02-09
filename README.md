@@ -7,6 +7,7 @@ Este é um projeto pessoal, feito em React. Ele serve para você conferir você 
 ## Tecnologias utilizadas
 
 - React (Vite)
+- [React Currency Input Field Component](https://www.npmjs.com/package/react-currency-input-field)
   
 ## Como acessar online
 
