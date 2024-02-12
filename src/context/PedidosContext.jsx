@@ -21,7 +21,7 @@ export const PedidosProvider = ({ children }) => {
         const pedidoIgual = pedidos.find(item => (
             item.nome === novoPedido.nome
             &&
-            item.preco === novoPedido.preco || item.preco == 0
+            item.preco === novoPedido.preco || novoPedido.preco === 0
         ))
 
         if (ehObjetoVazio(pedidoIgual)) {
