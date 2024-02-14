@@ -51,7 +51,6 @@ export default function ModalAdd() {
                     titulo='Preço'
                     valor={preco}
                     setValor={setPreco}
-                    tipo='moeda'
                 />
 
                 <CampoFormulario

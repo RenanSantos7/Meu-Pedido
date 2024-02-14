@@ -1,16 +1,17 @@
-.campo {
+.campoContainer {
     /* border: 1px solid goldenrod; */
     display: flex;
     flex-direction: column;
     margin-block: 1rem;
     gap: .5rem;
+    width: 100%;
 }
 
 .label {
     font-weight: 600;
 }
 
-.campo input {
+.campo {
     background-color: var(--bg-input);
     border: 1px solid var(--borda);
     border-radius: 4px;
@@ -19,8 +20,16 @@
     margin: 2px;
 }
 
+.campo input {
+    width: 0;
+    overflow: hidden;
+}
+
 .campo input:focus {
     outline: none;
+}
+
+.campo:has(input:focus) {
     border: 2px solid var(--cor2);
     margin: 0;
 }

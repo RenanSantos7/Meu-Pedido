@@ -1,32 +1,43 @@
+import { useEffect, useState } from 'react';
 import styles from './CampoMoeda.module.css'
-import CurrencyInput from 'react-currency-input-field'
 
 export default function CampoMoeda({
-    titulo,
-    placeholder,
-    valor,
-    setValor,
-    padrao,
-    tipo
+  obrigatorio = false,
+  titulo,
+  valor,
+  setValor,
 }) {
-    
-    function aoPerderFoco(value) {
-        let valorConvertido = value.replace(',', '.')
-        valorConvertido = valorConvertido.replace(/R\$\s/, '')
-        setValor(valorConvertido)
-    }
 
-    return (
-        <label className={styles.campo}>
-            <span className={styles.label}>{titulo}</span>
-            <CurrencyInput
-                placeholder='R$ 0,00'
-                disableGroupSeparators={true}
-                decimalScale={2}
-                intlConfig={{ locale: 'pt-BR', currency: 'BRL' }}
-                onBlur={evt => aoPerderFoco(evt.target.value)}
-            />
-        </label>
-    )
+  const [valorExibido, setValorExibido] = useState('R$ 0,00')
+
+  function aoMudar(evt) {
+    let novoValor = evt.target.value;
+    setValor(Number(novoValor));
+  }
+
+  useEffect(() => {
+    const valorFormatado = valor.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    })
+
+    setValorExibido(valorFormatado)
+  }, [valor])
+
+  return (
+    <div className={styles.campoContainer}>
+      <span className={styles.label}>{titulo}</span>
+      <label className={styles.campo}>
+        <span className={styles.valor}>{valorExibido}</span>
+        <input
+          type='number'
+          value={valor}
+          onChange={aoMudar}
+          className={styles.campoInput}
+          required={obrigatorio}
+        />
+      </label>
+    </div>
+  )
 
 }

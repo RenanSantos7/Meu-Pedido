@@ -33,6 +33,7 @@ export default function CampoFormulario({
                 onChange={evt => aoMudar(evt.target.value)}
                 pattern={padrao}
                 required={true}
+                type={tipo === 'numero' ? 'number' : 'text'}
             />
         </label>
     )
